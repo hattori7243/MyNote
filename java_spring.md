@@ -1,5 +1,3 @@
-
-
 # 1. Spring
 
 ## 1.1 Spring 是什么
@@ -10,7 +8,7 @@ Spring时分层的轻量级开源框架，以**IoC**和**AOP**为内核
 
 引入第三方（例如Spring框架）来解除对象之间的耦合关系，当对象A运行到需要对象B的时候，IOC容器会主动创建一个对象B注入到对象A需要的地方。而不是类似于之前需要对象A自己创建对象B并且管理。因此，对象A获得依赖对象B的过程由主动变成了被动，控制权发生了颠倒，也就是控制反转。也就是获得依赖对象的过程由自身管理变成了接受IoC容器的注入。**通过引入IOC容器，利用依赖关系注入的方式，实现对象之间的解耦**。
 
-	- https://blog.csdn.net/m13666368773/article/details/7802126
+- https://blog.csdn.net/m13666368773/article/details/7802126
 
 ### 1.1.2 AOP: 面向切面编程 Aspect Oriented Programming
 
@@ -166,11 +164,24 @@ Spring时分层的轻量级开源框架，以**IoC**和**AOP**为内核
 
 ![](https://raw.githubusercontent.com/hattori7243/img/master/20210312193305.png)
 
+- 切点表达式的抽取: 先定义<aop:pointcut id=xxx expression="xxx"/>, 然后在下面pointcut-ref=id即可
+
 ### 5.1.2 通知类型
 
 ![](https://raw.githubusercontent.com/hattori7243/img/master/20210312193526.png)
 
 ## 5.2 注解方式实现
+
+![](https://raw.githubusercontent.com/hattori7243/img/master/20210312200541.png)
+
+- 通知类型注解:@Before @AfterReturning @Around @AfterThrowing @After
+
+- 切面表达式的抽取：在切面内定义一个空方法，然后在上面用@Pointcut定义切点表达式，然后通过方法名作为id引用。
+  - <img src="https://raw.githubusercontent.com/hattori7243/img/master/20210312201123.png" style="zoom:67%;" />
+- 要点：
+  - 使用@Aspect标注切面类
+  - 使用 @通知注解 标注通知方法
+  - **在配置文件中配置注解扫描范围和aop自动代理< aop:aspectj-autoproxy />**
 
 
 
